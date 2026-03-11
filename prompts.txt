@@ -1,0 +1,18 @@
+Prompt 1
+Write a Python script that generates a realistic dataset of 100 health related activities with fields like:
+activity_id, activity_type, name, priority, frequency, facilitator, location,
+remote_possible, equipment, details, preparation, backup_activity,
+skip_adjustment, metrics and saves it to activities.csv.
+
+Prompt 2
+Write Python code to generate availability data for 3 months for:
+equipment, specialists, allied health professionals, and travel schedules.
+
+Prompt 3
+Write a simple scheduler that reads activities and availability datasets
+and generates a personalized schedule while checking travel constraints
+and using backup activities if needed.
+
+Prompt 4
+Modify the scheduler so the output plan is sorted by date and time 
+to resemble a calendar.
