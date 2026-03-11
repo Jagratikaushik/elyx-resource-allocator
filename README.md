@@ -1,5 +1,9 @@
 # Elyx Resource Allocator
 
+## Live App
+https://elyx-resource-allocator.streamlit.app
+
+
 ## Overview
 This project implements a simplified version of Elyx's Resource Allocator system.  
 It converts a health action plan into scheduled activities while considering resource constraints.
