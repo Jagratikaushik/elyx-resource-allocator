@@ -60,3 +60,7 @@ python src/scheduler.py
 - Python
 - Pandas
 - CSV datasets
+
+AI tools were used to assist in generating the dataset generation scripts,
+availability simulation logic, and scheduler implementation.
+Prompts used during development are documented in prompts.txt.

@@ -1,18 +1,48 @@
 Prompt 1
-Write a Python script that generates a realistic dataset of 100 health related activities with fields like:
+Write a Python script that generates a realistic synthetic dataset of at least 100 health-related activities for a wellness program.
+
+Each activity should include the following fields:
 activity_id, activity_type, name, priority, frequency, facilitator, location,
 remote_possible, equipment, details, preparation, backup_activity,
-skip_adjustment, metrics and saves it to activities.csv.
+skip_adjustment, metrics.
+
+Ensure that:
+- activity types include exercise, food, medication, therapy, and consultation
+- facilitators, locations, and equipment are logically consistent
+- activities contain meaningful descriptions and preparation steps
+- backup activities are contextually appropriate
+
+Save the generated dataset to activities.csv.
 
 Prompt 2
-Write Python code to generate availability data for 3 months for:
-equipment, specialists, allied health professionals, and travel schedules.
+Write a Python script to generate realistic availability datasets for a health program over a 3-month period.
+
+Create separate CSV files for:
+- equipment availability
+- specialist availability (trainer, therapist, dietician, physiotherapist)
+- travel schedule
+
+Ensure the generated data simulates realistic constraints such as:
+- specialists having fixed working time slots
+- availability varying across days
+- travel occurring in multi-day blocks rather than random single days.
+
+Save the datasets as equipment.csv, specialists.csv, and travel.csv.
 
 Prompt 3
-Write a simple scheduler that reads activities and availability datasets
-and generates a personalized schedule while checking travel constraints
-and using backup activities if needed.
+Write a Python scheduler that reads the activities dataset and availability datasets and generates a personalized activity schedule.
+
+The scheduler should:
+- allocate activities to random dates within the planning period
+- check travel constraints
+- check equipment availability
+- check specialist availability
+- substitute backup activities when constraints prevent the original activity from being scheduled.
 
 Prompt 4
-Modify the scheduler so the output plan is sorted by date and time 
-to resemble a calendar.
+Modify the scheduler so that:
+- activities are assigned realistic time slots depending on activity type
+- time conflicts on the same date are avoided
+- the final schedule is sorted by date and time
+
+Export the result as a readable calendar-style CSV file named personal_plan.csv.
