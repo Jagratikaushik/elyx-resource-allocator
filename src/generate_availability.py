@@ -2,55 +2,51 @@ import csv
 import random
 from datetime import datetime, timedelta
 
-start_date = datetime(2026, 1, 1)
-end_date = datetime(2026, 3, 31)
+start = datetime(2026, 1, 1)
+end = datetime(2026, 3, 31)
+
+equipment = ["Treadmill", "Yoga_Mat", "Sauna", "IceBath", "Weights"]
+specialists = ["Trainer", "Therapist", "Dietician", "Physiotherapist"]
+
+times = ["07:00","09:00","11:00","14:00","16:00"]
 
 dates = []
-current = start_date
 
-while current <= end_date:
+current = start
+while current <= end:
     dates.append(current.strftime("%Y-%m-%d"))
     current += timedelta(days=1)
 
-equipment_list = ["Treadmill", "Sauna", "IceBath", "Yoga_Mat"]
-specialists = ["Trainer", "Dietician", "Therapist"]
-allied_health = ["Physiotherapist", "Dietitian", "Occupational_Therapist"]
+# equipment availability
+with open("data/equipment.csv","w",newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["equipment","date","available"])
 
-time_slots = ["08:00-09:00", "10:00-11:00", "14:00-15:00", "16:00-17:00"]
+    for d in dates:
+        for e in equipment:
+            availability = "Yes" if random.random() > 0.2 else "No"
+            writer.writerow([e,d,availability])
 
-# Equipment availability
-with open("data/equipment.csv", "w", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerow(["equipment", "date", "available"])
+# specialists
+with open("data/specialists.csv","w",newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["specialist","date","time_slot","available"])
 
-    for date in dates:
-        for eq in equipment_list:
-            writer.writerow([eq, date, random.choice(["Yes", "No"])])
+    for d in dates:
+        for s in specialists:
+            writer.writerow([
+                s,
+                d,
+                random.choice(times),
+                "Yes" if random.random()>0.25 else "No"
+            ])
 
-# Specialist availability
-with open("data/specialists.csv", "w", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerow(["specialist", "date", "time_slot", "available"])
+# travel
+with open("data/travel.csv","w",newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["date","travel"])
 
-    for date in dates:
-        for sp in specialists:
-            writer.writerow([sp, date, random.choice(time_slots), random.choice(["Yes", "No"])])
+    for d in dates:
+        writer.writerow([d,"Yes" if random.random()<0.1 else "No"])
 
-# Allied health availability
-with open("data/allied_health.csv", "w", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerow(["role", "date", "time_slot"])
-
-    for date in dates:
-        for role in allied_health:
-            writer.writerow([role, date, random.choice(time_slots)])
-
-# Travel plans
-with open("data/travel.csv", "w", newline="") as file:
-    writer = csv.writer(file)
-    writer.writerow(["date", "travel"])
-
-    for date in dates:
-        writer.writerow([date, random.choice(["Yes", "No"])])
-
-print("Availability data generated successfully!")
+print("Generated realistic availability schedules")
